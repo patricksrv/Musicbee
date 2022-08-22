@@ -30,6 +30,9 @@ let songs = [
     {songName: "Tera Fitoor", filePath: "songs/18.mp3", coverPath: "covers/18.jpg"},
     {songName: "Tu Jaane Na", filePath: "songs/19.mp3", coverPath: "covers/19.jpg"},
     {songName: "Jeena Jeena", filePath: "songs/20.mp3", coverPath: "covers/20.jpg"},
+    {songName: "Kisi Ki Muskurahaton Pe", filePath: "songs/21.mp3", coverPath: "covers/21.jpg"},
+    {songName: "Main Shayar To Nahi", filePath: "songs/22.mp3", coverPath: "covers/22.jpg"},
+    {songName: "Meri Mehbooba", filePath: "songs/23.mp3", coverPath: "covers/23.jpg"},
 ]
 
 songItems.forEach((element, i)=>{ 
@@ -113,6 +116,16 @@ document.getElementById('previous').addEventListener('click', ()=>{
     audioElement.src = `songs/${songIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
+    audioElement.play();
+    masterPlay.classList.remove('fa-play-circle');
+    masterPlay.classList.add('fa-pause-circle');
+})
+
+audioElement.addEventListener('ended',function(){
+    audioElement.src = `songs/${songIndex+2}.mp3`;
+    masterSongName.innerText = songs[songIndex+1].songName;
+    audioElement.currentTime = 0;
+    audioElement.load();
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
